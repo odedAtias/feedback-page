@@ -2,6 +2,7 @@
 import { useState } from 'react';
 // Components imports
 import Header from './Components/Header';
+import FeedBackItem from './Components/FeedbackItem';
 // Services imports
 import FeedbackData from './services/FeedbackData';
 
@@ -12,7 +13,9 @@ function App() {
 	return (
 		<>
 			<Header />
-			<div className='container'></div>
+			<div className='container'>
+				<FeedBackItem item={feedbacks[0]} />
+			</div>
 		</>
 	);
 }

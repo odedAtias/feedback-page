@@ -92,6 +92,12 @@ header {
   cursor: pointer;
 }
 
+.text-display {
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 1.2px;
+}
+
 .rating li:hover,
 .num-display {
   background: rebeccapurple;

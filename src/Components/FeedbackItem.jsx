@@ -1,5 +1,5 @@
 // Components imports
-import Card from './common/Card';
+import Card from './shared/Card';
 // Icons imports
 import { AiOutlineDelete } from 'react-icons/ai';
 // PropTypes
