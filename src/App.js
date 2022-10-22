@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Header from './Components/Header';
 import FeedBackList from './Components/FeedbackList';
 import FeedbackStats from './Components/FeedbackStats';
+import FeedbackForm from './Components/FeedbackForm';
 // Services imports
 import FeedbackData from './services/FeedbackData';
 
@@ -20,6 +21,7 @@ function App() {
 		<>
 			<Header />
 			<div className='container'>
+				<FeedbackForm />
 				<FeedbackStats feedbacks={feedbacks} />
 				<FeedBackList feedBacks={feedbacks} onDelete={handleFeedbackDelete} />
 			</div>
