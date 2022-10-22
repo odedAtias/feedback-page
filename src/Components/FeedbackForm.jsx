@@ -3,12 +3,32 @@ import { useState } from 'react';
 // Components imports
 import Card from './shared/Card';
 import Button from './shared/Button';
+// Joi-Validation import
+import Joi from 'joi-browser';
 
 //Our Component
 const FeedbackForm = () => {
+	//App States
 	const [text, setText] = useState('');
+	const [btnDisabled, setBtnDisabled] = useState(true);
+	const [message, setMessage] = useState('');
+
+	//Joi Validation Schema
+	const schema = Joi.object({
+		text: Joi.string().min(10).required().label('Feedback'),
+	});
+
+	//FeedbackForm Event Handlers
 	const handleTextChange = ({ target: input }) => {
 		setText(input.value);
+		const { error } = Joi.validate({ text: text }, schema);
+		if (error) {
+			setMessage(error.details[0].message);
+			setBtnDisabled(true);
+		} else {
+			setMessage('');
+			setBtnDisabled(false);
+		}
 	};
 	return (
 		<Card>
@@ -21,8 +41,11 @@ const FeedbackForm = () => {
 						placeholder='Write a review'
 						value={text}
 					/>
-					<Button type='submit'>Send</Button>
+					<Button type='submit' isDisabled={btnDisabled}>
+						Send
+					</Button>
 				</div>
+				{message && <div className='message'>{message}</div>}
 			</form>
 		</Card>
 	);
