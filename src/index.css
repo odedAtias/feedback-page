@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed&display=swap');
 
 * {
   box-sizing: border-box;
@@ -7,7 +7,9 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Saira Condensed', sans-serif;
+
+
   background: #8E2DE2;
   /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);
