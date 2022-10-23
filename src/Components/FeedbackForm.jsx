@@ -37,10 +37,22 @@ const FeedbackForm = () => {
 	const handleSelectChange = rating => {
 		setRating(rating);
 	};
+	//submit implement
+	const handleSubmit = event => {
+		//Submit button by default take round trip to the server ...
+		event.preventDefault();
+		//Add new feedback
+		const newFeedback = {
+			//text, = text: text
+			text,
+			rating,
+		};
+		console.log(newFeedback);
+	};
 
 	return (
 		<Card>
-			<form>
+			<form onSubmit={handleSubmit}>
 				<h2>How would you rate your service with us?</h2>
 				<RatingSelect onSelectChange={handleSelectChange} />
 				<div className='input-group'>
