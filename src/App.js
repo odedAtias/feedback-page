@@ -7,23 +7,34 @@ import FeedbackStats from './Components/FeedbackStats';
 import FeedbackForm from './Components/FeedbackForm';
 // Services imports
 import FeedbackData from './services/FeedbackData';
+// npm dependencies imports
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
 	//App States
 	const [feedbacks, setFeedbacks] = useState(FeedbackData);
 	//App Event Handlers
-	const handleFeedbackDelete = id => {
+
+	//Delete feedback
+	const deleteFeedback = id => {
 		if (window.confirm('Are you sure you want to delete ? '))
 			setFeedbacks(feedbacks.filter(f => f.id !== id));
+	};
+	//Add new feedback
+	const addFeedback = newFeedback => {
+		//set id to the new feedback
+		newFeedback.id = uuidv4();
+		//adding the new feedback to the start
+		setFeedbacks([newFeedback, ...feedbacks]);
 	};
 
 	return (
 		<>
 			<Header />
 			<div className='container'>
-				<FeedbackForm />
+				<FeedbackForm onAddFeedback={addFeedback} />
 				<FeedbackStats feedbacks={feedbacks} />
-				<FeedBackList feedBacks={feedbacks} onDelete={handleFeedbackDelete} />
+				<FeedBackList feedBacks={feedbacks} onDeleteFeedback={deleteFeedback} />
 			</div>
 		</>
 	);

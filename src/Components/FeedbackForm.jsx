@@ -4,11 +4,11 @@ import { useState } from 'react';
 import Card from './shared/Card';
 import Button from './shared/Button';
 import RatingSelect from './RatingSelect';
-// Joi-Validation import
+//npm dependencies import
 import Joi from 'joi-browser';
 
 //Our Component
-const FeedbackForm = () => {
+const FeedbackForm = ({ onAddFeedback }) => {
 	//App States
 	const [text, setText] = useState('');
 	const [rating, setRating] = useState(10);
@@ -47,7 +47,8 @@ const FeedbackForm = () => {
 			text,
 			rating,
 		};
-		console.log(newFeedback);
+		onAddFeedback(newFeedback);
+		setText('');
 	};
 
 	return (
