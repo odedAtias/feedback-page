@@ -1,21 +1,37 @@
 // Components imports
-import FeedBackItem from './FeedbackItem';
+import FeedbackItem from './FeedbackItem';
 // PropTypes
 import { PropTypes } from 'prop-types';
+// Framer motion
+import { motion, AnimatePresence, animate } from 'framer-motion';
 
-const FeedBackList = ({ feedBacks, onDelete }) => {
-	if (!feedBacks || feedBacks.length === 0) return <p>No feedback yet</p>;
+const FeedbackList = ({ feedbacks, onDeleteFeedback }) => {
+	if (!feedbacks || feedbacks.length === 0) return <p>No feedback yet</p>;
+	//Animations
 	return (
-		<div className='feedback-list'>
-			{feedBacks.map(item => (
-				<FeedBackItem key={item.id} item={item} onDelete={onDelete} />
-			))}
-		</div>
+		<AnimatePresence>
+			<div className='feedback-list'>
+				{feedbacks.map(item => (
+					<motion.div
+						key={item.id}
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						layout>
+						<FeedbackItem
+							key={item.id}
+							item={item}
+							onDeleteFeedback={onDeleteFeedback}
+						/>
+					</motion.div>
+				))}
+			</div>
+		</AnimatePresence>
 	);
 };
 
-FeedBackList.propTypes = {
-	feedBacks: PropTypes.arrayOf(
+FeedbackList.propTypes = {
+	feedbacks: PropTypes.arrayOf(
 		PropTypes.shape({
 			id: PropTypes.string.isRequired,
 			text: PropTypes.string.isRequired,
@@ -24,4 +40,4 @@ FeedBackList.propTypes = {
 	),
 };
 
-export default FeedBackList;
+export default FeedbackList;

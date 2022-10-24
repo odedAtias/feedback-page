@@ -34,7 +34,7 @@ function App() {
 			<div className='container'>
 				<FeedbackForm onAddFeedback={addFeedback} />
 				<FeedbackStats feedbacks={feedbacks} />
-				<FeedBackList feedBacks={feedbacks} onDeleteFeedback={deleteFeedback} />
+				<FeedBackList feedbacks={feedbacks} onDeleteFeedback={deleteFeedback} />
 			</div>
 		</>
 	);

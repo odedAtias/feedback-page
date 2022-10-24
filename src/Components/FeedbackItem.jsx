@@ -5,7 +5,7 @@ import { AiOutlineDelete } from 'react-icons/ai';
 // PropTypes
 import { PropTypes } from 'prop-types';
 
-const FeedBackItem = ({ item, onDeleteFeedback }) => {
+const FeedbackItem = ({ item, onDeleteFeedback }) => {
 	const { rating, text } = item;
 	return (
 		<Card reverse={false}>
@@ -18,8 +18,8 @@ const FeedBackItem = ({ item, onDeleteFeedback }) => {
 	);
 };
 
-FeedBackItem.propTypes = {
+FeedbackItem.propTypes = {
 	item: PropTypes.object.isRequired,
 };
 
-export default FeedBackItem;
+export default FeedbackItem;
