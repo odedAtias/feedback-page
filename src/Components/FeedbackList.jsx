@@ -3,7 +3,7 @@ import FeedbackItem from './FeedbackItem';
 // PropTypes
 import { PropTypes } from 'prop-types';
 // Framer motion
-import { motion, AnimatePresence, animate } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const FeedbackList = ({ feedbacks, onDeleteFeedback }) => {
 	if (!feedbacks || feedbacks.length === 0) return <p>No feedback yet</p>;

@@ -5,10 +5,13 @@ import Header from './Components/Header';
 import FeedBackList from './Components/FeedbackList';
 import FeedbackStats from './Components/FeedbackStats';
 import FeedbackForm from './Components/FeedbackForm';
+import About from './Pages/About';
+import AboutIconLink from './Components/shared/AboutIconLink';
 // Services imports
-import FeedbackData from './services/FeedbackData';
+import FeedbackData from './Services/FeedbackData';
 // npm dependencies imports
 import { v4 as uuidv4 } from 'uuid';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
 	//App States
@@ -29,14 +32,30 @@ function App() {
 	};
 
 	return (
-		<>
+		<Router>
 			<Header />
 			<div className='container'>
-				<FeedbackForm onAddFeedback={addFeedback} />
-				<FeedbackStats feedbacks={feedbacks} />
-				<FeedBackList feedbacks={feedbacks} onDeleteFeedback={deleteFeedback} />
+				<Routes>
+					{/* First route */}
+					<Route
+						exact
+						path='/'
+						element={
+							<>
+								<FeedbackForm onAddFeedback={addFeedback} />
+								<FeedbackStats feedbacks={feedbacks} />
+								<FeedBackList
+									feedbacks={feedbacks}
+									onDeleteFeedback={deleteFeedback}
+								/>
+							</>
+						}></Route>
+					{/* Second route */}
+					<Route path='/about' element={<About />} />
+				</Routes>
 			</div>
-		</>
+			<AboutIconLink />
+		</Router>
 	);
 }
 
