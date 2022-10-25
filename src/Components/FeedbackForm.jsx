@@ -1,14 +1,17 @@
 //Hooks imports
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 // Components imports
 import Card from './shared/Card';
 import Button from './shared/Button';
 import RatingSelect from './RatingSelect';
 //npm dependencies import
 import Joi from 'joi-browser';
+// Contexts imports
+import FeedbackContext from '../Context/FeedbackContext';
 
 //Our Component
-const FeedbackForm = ({ onAddFeedback }) => {
+const FeedbackForm = () => {
+	const { addFeedback } = useContext(FeedbackContext);
 	//App States
 	const [text, setText] = useState('');
 	const [rating, setRating] = useState(10);
@@ -17,7 +20,7 @@ const FeedbackForm = ({ onAddFeedback }) => {
 
 	//Joi Validation Schema
 	const schema = Joi.object({
-		text: Joi.string().min(10).required().label('Feedback'),
+		text: Joi.string().min(10).trim().required().label('Feedback'),
 	});
 
 	//FeedbackForm Event Handlers
@@ -39,6 +42,7 @@ const FeedbackForm = ({ onAddFeedback }) => {
 	};
 	//submit implement
 	const handleSubmit = event => {
+		console.log('hi');
 		//Submit button by default take round trip to the server ...
 		event.preventDefault();
 		//Add new feedback
@@ -47,7 +51,7 @@ const FeedbackForm = ({ onAddFeedback }) => {
 			text,
 			rating,
 		};
-		onAddFeedback(newFeedback);
+		addFeedback(newFeedback);
 		setText('');
 	};
 
