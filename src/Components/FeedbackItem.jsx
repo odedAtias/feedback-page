@@ -3,7 +3,7 @@ import { useContext } from 'react';
 // Components imports
 import Card from './shared/Card';
 // Icons imports
-import { AiOutlineDelete } from 'react-icons/ai';
+import { RiDeleteBinLine, RiEditBoxLine } from 'react-icons/ri';
 // PropTypes
 import { PropTypes } from 'prop-types';
 // Contexts imports
@@ -15,7 +15,10 @@ const FeedbackItem = ({ item }) => {
 	return (
 		<Card reverse={false}>
 			<button onClick={() => deleteFeedback(item.id)} className='close'>
-				<AiOutlineDelete color='purple' size='20px' />
+				<RiDeleteBinLine color='purple' size='20px' />
+			</button>
+			<button className='edit'>
+				<RiEditBoxLine color='purple' size='20px' />
 			</button>
 			<div className='num-display'>{rating}</div>
 			<div className='text-display'>{text}</div>
