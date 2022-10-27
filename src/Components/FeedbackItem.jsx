@@ -10,14 +10,16 @@ import { PropTypes } from 'prop-types';
 import FeedbackContext from '../Context/FeedbackContext';
 
 const FeedbackItem = ({ item }) => {
-	const { deleteFeedback } = useContext(FeedbackContext);
+	const { deleteFeedback, editFeedback } = useContext(FeedbackContext);
 	const { rating, text } = item;
 	return (
 		<Card reverse={false}>
+			{/* Delete button */}
 			<button onClick={() => deleteFeedback(item.id)} className='close'>
 				<RiDeleteBinLine color='purple' size='20px' />
 			</button>
-			<button className='edit'>
+			{/* Edit button */}
+			<button onClick={() => editFeedback(item)} className='edit'>
 				<RiEditBoxLine color='purple' size='20px' />
 			</button>
 			<div className='num-display'>{rating}</div>

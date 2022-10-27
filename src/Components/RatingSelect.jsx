@@ -1,10 +1,18 @@
 //Hooks imports
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import FeedbackContext from '../Context/FeedbackContext';
 
 //Our Component
 const RatingSelect = ({ onSelectChange }) => {
 	//RatingSelect states
 	const [selected, setSelected] = useState(10);
+
+	//RatingSelect
+	const { feedbackEdit } = useContext(FeedbackContext);
+
+	useEffect(() => {
+		setSelected(feedbackEdit.item.rating);
+	}, [feedbackEdit]);
 
 	//RatingSelect Event Handlers
 	const handleSelectChange = ({ target: input }) => {
