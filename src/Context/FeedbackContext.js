@@ -1,5 +1,5 @@
 //	Hooks imports
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 // 	npm dependencies imports
 import { v4 as uuidv4 } from 'uuid';
 //	Our context
@@ -8,38 +8,28 @@ const FeedbackContext = createContext();
 //Our component
 export const FeedbackProvider = ({ children }) => {
 	//Feedbacks data
-	const [feedbacks, setFeedbacks] = useState([
-		{
-			id: '1',
-			rating: 10,
-			text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
-		},
-		{
-			id: '2',
-			rating: 9,
-			text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
-		},
-		{
-			id: '3',
-			rating: 5,
-			text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
-		},
-		{
-			id: '4',
-			rating: 7,
-			text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
-		},
-		{
-			id: '5',
-			rating: 2,
-			text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.',
-		},
-	]);
+	const [feedbacks, setFeedbacks] = useState([]);
 	//Feedback Edit
 	const [feedbackEdit, setFeedbackEdit] = useState({
 		item: {},
 		edit: false,
 	});
+	//Loading boolean flag
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		fetchFeedback();
+	}, []);
+
+	//Fetch Feedbacks
+	const fetchFeedback = async () => {
+		const response = await fetch(
+			`http://localhost:5000/feedbacks?_sort=id&_order=desc`
+		);
+		const data = await response.json();
+		setFeedbacks(data);
+		setIsLoading(false);
+	};
 
 	//Delete feedback
 	const deleteFeedback = id => {
@@ -72,6 +62,7 @@ export const FeedbackProvider = ({ children }) => {
 			value={{
 				feedbacks,
 				feedbackEdit,
+				isLoading,
 				deleteFeedback,
 				addFeedback,
 				editFeedback,
