@@ -1,7 +1,5 @@
 //	Hooks imports
 import { createContext, useState, useEffect } from 'react';
-// 	npm dependencies imports
-import { v4 as uuidv4 } from 'uuid';
 //	Our context
 const FeedbackContext = createContext();
 
@@ -37,11 +35,15 @@ export const FeedbackProvider = ({ children }) => {
 			setFeedbacks(feedbacks.filter(f => f.id !== id));
 	};
 	//Add new feedback
-	const addFeedback = newFeedback => {
-		//set id to the new feedback
-		newFeedback.id = uuidv4();
+	const addFeedback = async newFeedback => {
+		const response = await fetch('http://localhost:5000/feedbacks', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(newFeedback),
+		});
+		const data = await response.json();
 		//adding the new feedback to the start
-		setFeedbacks([newFeedback, ...feedbacks]);
+		setFeedbacks([data, ...feedbacks]);
 	};
 	//Set item to be updated
 	const editFeedback = item => {
