@@ -22,7 +22,7 @@ const FeedbackList = () => {
 				justifyContent: 'center',
 				marginTop: '50px',
 			}}>
-			<div class='lds-ring'>
+			<div className='lds-ring'>
 				<div></div>
 				<div></div>
 				<div></div>

@@ -5,7 +5,10 @@ import FeedbackContext from '../Context/FeedbackContext';
 
 //Average Calculate
 const avg = feedbacks => {
-	let sum = feedbacks.reduce((sum, current) => sum + current.rating, 0);
+	let sum = feedbacks.reduce(
+		(sum, current) => sum + parseInt(current.rating),
+		0
+	);
 	//2 fixed(x) return to us x digits after the '.'
 	//parse float removing all the trailing zeros after the '.'
 	return parseFloat((sum / feedbacks.length).toFixed(2));
