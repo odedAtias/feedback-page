@@ -30,9 +30,13 @@ export const FeedbackProvider = ({ children }) => {
 	};
 
 	//Delete feedback
-	const deleteFeedback = id => {
-		if (window.confirm('Are you sure you want to delete ? '))
-			setFeedbacks(feedbacks.filter(f => f.id !== id));
+	const deleteFeedback = async id => {
+		if (window.confirm('Are you sure you want to delete ? ')) {
+			await fetch(`http://localhost:5000/feedbacks/${id}`, {
+				method: 'DELETE',
+			});
+		}
+		setFeedbacks(feedbacks.filter(f => f.id !== id));
 	};
 	//Add new feedback
 	const addFeedback = async newFeedback => {
