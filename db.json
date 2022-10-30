@@ -1,8 +1,23 @@
 {
   "feedbacks": [
     {
-      "text": "Feedback text from the back end - after update",
+      "text": "You do wonderful work.",
       "rating": 7,
+      "id": "1"
+    },
+    {
+      "text": "This place is amazing!",
+      "rating": 9,
+      "id": "1"
+    },
+    {
+      "text": "If you’re looking for a place where to relax and read some novels or whatever, this place would be the best.",
+      "rating": 8,
+      "id": "1"
+    },
+    {
+      "text": "This place is very different and well organized according to other places.",
+      "rating": 10,
       "id": "1"
     }
   ]
