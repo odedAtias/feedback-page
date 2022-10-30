@@ -10,7 +10,7 @@ const Header = ({ bgColor, textColor }) => {
 	return (
 		<header style={headerStyles}>
 			<div className='container'>
-				<h2>Feedback Page</h2>
+				<h2>Feedbacks User Interface</h2>
 			</div>
 		</header>
 	);
