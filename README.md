@@ -3,6 +3,8 @@
 A Project to create a simulation for a feedback page of any e-commerce, customer services website or any other business that provides an applicative service.
 The purpose of this project is to learn well the basics of the React library.
 
+![FEEDBACKS](FEEDBACKS.png)
+
 ## Technologies
 
 👉 REACT.JSX
@@ -29,9 +31,25 @@ The purpose of this project is to learn well the basics of the React library.
 ## External style libraries
 
 🔹 Google Fonts.
+
 🔹 Brad Traversy style sheet.
+
 🔹 React icons.
 
 ## Backend Services
 
 🔹 json-servers
+
+## Usage
+
+```
+~$: npm run dev
+```
+## for any questions
+
+```
+if(haveAnyQuestions === true){
+    let yourName = ".......", question = ".......";
+    sendEmailToMe(yourName,question,odedatias8115@gmail.com);
+}
+```
