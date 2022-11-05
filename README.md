@@ -9,7 +9,7 @@ The purpose of this project is to learn well the basics of the React library.
 
 👉 REACT.JSX
 
-👉 CSS
+👉 CSS3
 
 ## Implementation Remarks
 
