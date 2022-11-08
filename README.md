@@ -38,7 +38,7 @@ The purpose of this project is to learn well the basics of the React library.
 
 ## Backend Services
 
-🔹 json-servers
+🔹 json-server
 
 ## Usage
 
