@@ -43,6 +43,7 @@ The purpose of this project is to learn well the basics of the React library.
 ## Usage
 
 ```
+~$: npm i
 ~$: npm run dev
 ```
 ## for any questions
